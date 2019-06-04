@@ -33,7 +33,7 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
-import LarkTheme from '@ckeditor/ckeditor5-theme-lark';
+import CustomElementPlugin from 'ckeditor5-custom-element/src/customelement';
 
 export default class DecoupledEditor extends DecoupledEditorBase {}
 
@@ -66,7 +66,7 @@ DecoupledEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	LarkTheme
+	CustomElementPlugin
 ];
 
 // Editor configuration.
@@ -96,7 +96,17 @@ DecoupledEditor.defaultConfig = {
 			'mediaEmbed',
 			'|',
 			'undo',
-			'redo'
+			'redo',
+			'custom-element-tagname1'
+		]
+	},
+	CustomElement: {
+		items: [
+			{
+				tag: 'tagname1', placeholder: 'test',
+				attributes: { name: 'ABCD' },
+				inline: false, editable: false
+			}
 		]
 	},
 	image: {
